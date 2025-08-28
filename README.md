@@ -40,16 +40,19 @@ pip install pandas
 ## ⚙️ ETL Pipeline
 
 **Extract**:
-Reads all .csv, .json, and .xml files in the current directory and consolidates them into a single DataFrame.
+Reads all .csv, .json, and .xml files in the current directory.
+Each file type is processed with a dedicated function (extract_from_csv, extract_from_json, extract_from_xml) and the data is consolidated into a single DataFrame with the columns name, height, and weight.
 
 **Transform**:
-Reads exchange rates from a CSV file and converts market capitalization values from USD to GBP, EUR, and INR.
+Converts measurement units:
+- Height: from inches to meters (multiplied by 0.0254) and rounded to two decimals.
+- Weight: from pounds to kilograms (multiplied by 0.45359237) and rounded to two decimals
 
 **Load**:
-Saves the transformed dataset to transformed_data.csv.
+Saves the transformed DataFrame into a CSV file named transformed_data.csv.
 
 **Logging**:
-Every ETL stage (start/end of extraction, transformation, loading) is logged into log_file.txt with a timestamp.
+Every ETL phase (start/end of extraction, transformation, and loading) is logged into the log_file.txt file with a timestamp in the format Year-Monthname-Day-Hour-Minute-Second.
 
 ## 🚀 How to Run  
 
